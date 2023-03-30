@@ -1,5 +1,5 @@
 # E2123-HA-Blueprint
-Home Assistant blueprint for Ikea E2123 Symfonisk music remote gen2.
+Home Assistant blueprint for <a href="https://www.ikea.com/se/sv/manuals/symfonisk-ljudkontroll-gen-2__AA-2356375-2-2.pdf">Ikea E2123 Symfonisk music remote gen2.</a>
 <br>
 <br>
 <b>Problems</b>
