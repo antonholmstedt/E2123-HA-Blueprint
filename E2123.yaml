@@ -1,0 +1,143 @@
+blueprint:
+  name: Z2M IKEA Symfonisk gen2
+  description: "This blueprint is for the IKEA E2123 Symfonisk gen2 remote..
+  It is for genral use so all buttons can be connected to any action of your choice"
+  domain: automation
+  input:
+    remote:
+      name: Remote
+      description: IKEA remote to use
+      selector:
+        entity:
+          integration: mqtt
+          domain: sensor
+    button_track_play:
+      name: Play button press
+      description: Action to run when toggle play-button
+      default: []
+      selector:
+        action: {}
+    button_volume_up:
+      name: Volume up button - short press
+      description: Action to run when SHORT press on volume UP button
+      default: []
+      selector:
+        action: {}
+    button_volume_up_hold:
+      name: Volume up button - hold
+      description: Action to run when LONG press on volume UP button
+      default: []
+      selector:
+        action: {}
+    button_volume_down:
+      name: Volume down button - short press
+      description: Action to run when SHORT press on volume DOWN button
+      default: []
+      selector:
+        action: {}
+    button_volume_down_hold:
+      name: Volume down button - hold
+      description: Action to run when LONG press on volume DOWN button
+      default: []
+      selector:
+        action: {}
+    button_track_previous:
+      name: Previous button press
+      description: Action to run when press on PREVIOUS button
+      default: []
+      selector:
+        action: {}
+    button_track_next:
+      name: Next button press
+      description: Action to run when press on NEXT button
+      default: []
+      selector:
+        action: {}
+    button_dots_1_initial_press:
+      name: Dot 1 button - short press
+      description: Action to run when SHORT press on DOT 1 button
+      default: []
+      selector:
+        action: {}
+    button_dots_1_double_press:
+      name: Dot 1 button - double press
+      description: Action to run when DOUBLE press on DOT 1 button (Currently not working properly)
+      default: []
+      selector:
+        action: {}
+    button_dots_1_long_press:
+      name: Dot 1 button - long press
+      description: Action to run when LONG press on DOT 1 button (Currently not working properly)
+      default: []
+      selector:
+        action: {}
+    button_dots_2_initial_press:
+      name: Dot 2 button - short press
+      description: Action to run when SHORT press on DOT 2 button
+      default: []
+      selector:
+        action: {}
+    button_dots_2_double_press:
+      name: Dot 2 button - double press
+      description: Action to run when DOUBLE press on DOT 2 button (Currently not working properly)
+      default: []
+      selector:
+        action: {}
+    button_dots_2_long_press:
+      name: Dot 2 button - long press
+      description: Action to run when LONG press on DOT 2 button (Currently not working properly)
+      default: []
+      selector:
+        action: {}
+mode: restart
+max_exceeded: silent
+trigger:
+  - platform: state
+    entity_id: !input "remote"
+    attribute: action
+action:
+  - variables:
+      command: "{{ trigger.to_state.state }}"
+  - choose:
+      - conditions:
+          - "{{ command == 'track_play' }}"
+        sequence: !input "button_track_play"
+      - conditions:
+          - "{{ command == 'volume_up' }}"
+        sequence: !input "button_volume_up"
+      - conditions:
+          - "{{ command == 'volume_up_hold' }}"
+        sequence: !input "button_volume_up_hold"
+      - conditions:
+          - "{{ command == 'volume_down' }}"
+        sequence: !input "button_volume_down"
+      - conditions:
+          - "{{ command == 'volume_down_hold' }}"
+        sequence: !input "button_volume_down_hold"
+      - conditions:
+          - "{{ command == 'track_previous' }}"
+        sequence: !input "button_track_previous"
+      - conditions:
+          - "{{ command == 'track_next' }}"
+        sequence: !input "button_track_next"
+      - conditions:
+          - "{{ command == 'track_previous' }}"
+        sequence: !input "button_track_previous"
+      - conditions:
+          - "{{ command == 'dots_1_initial_press' }}"
+        sequence: !input "button_dots_1_initial_press"
+      - conditions:
+          - "{{ command == 'dots_1_long_press' }}"
+        sequence: !input "button_dots_1_long_press"
+      - conditions:
+          - "{{ command == 'dots_1_double_press' }}"
+        sequence: !input "button_dots_1_double_press"
+      - conditions:
+          - "{{ command == 'dots_2_initial_press' }}"
+        sequence: !input "button_dots_2_initial_press"
+      - conditions:
+          - "{{ command == 'dots_2_long_press' }}"
+        sequence: !input "button_dots_2_long_press"
+      - conditions:
+          - "{{ command == 'dots_2_double_press' }}"
+        sequence: !input "button_dots_2_double_press"
