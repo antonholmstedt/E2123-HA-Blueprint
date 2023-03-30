@@ -1,4 +1,4 @@
-# E2123-remote
+# E2123-HA-Blueprint
 Home Assistant blueprint for Ikea E2123 Symfonisk music remote gen2.
 <br>
 <br>
