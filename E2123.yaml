@@ -1,7 +1,7 @@
 blueprint:
   name: Z2M IKEA Symfonisk gen2
-  description: "This blueprint is for the IKEA E2123 Symfonisk gen2 remote..
-  It is for genral use so all buttons can be connected to any action of your choice"
+  description: "This blueprint is for the IKEA E2123 Symfonisk gen2 remote.
+  I've choosen to let all buttons be configurable."
   domain: automation
   input:
     remote:
