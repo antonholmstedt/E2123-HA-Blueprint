@@ -11,7 +11,7 @@ blueprint:
         entity:
           integration: mqtt
           domain: sensor
-    button_track_play:
+    button_play_pause:
       name: Play button press
       description: Action to run when toggle play-button
       default: []
@@ -100,8 +100,8 @@ action:
       command: "{{ trigger.to_state.state }}"
   - choose:
       - conditions:
-          - "{{ command == 'track_play' }}"
-        sequence: !input "button_track_play"
+          - "{{ command == 'play_pause' }}"
+        sequence: !input "button_play_pause"
       - conditions:
           - "{{ command == 'volume_up' }}"
         sequence: !input "button_volume_up"
